@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  lmms:
+    build: .
+    container_name: lmms
+    restart: unless-stopped
+    environment:
+      - DISPLAY=:0
+    volumes:
+      - ./projects:/home/lmms/projects
+    networks:
+      - web
+    expose:
+      - 8080
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - lmms
+    networks:
+      - web
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  web:
+    driver: bridge
