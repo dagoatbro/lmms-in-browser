@@ -1,0 +1,22 @@
+# Ignore build artifacts
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Docker
+**/caddy_data/
+**/caddy_config/
+**/projects/
+
+# Node/npm (if ever used)
+node_modules/
+
+# macOS system files
+.DS_Store
+
+# Python cache
+__pycache__/
+
+# VSCode config
+.vscode/
