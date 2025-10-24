@@ -1,0 +1,11 @@
+music.yourdomain.com {
+    reverse_proxy lmms:8080
+}
+For local development (localhost):
+
+csharp
+Copy code
+https://localhost {
+    tls internal
+    reverse_proxy lmms:8080
+}
